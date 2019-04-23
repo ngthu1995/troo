@@ -1,0 +1,53 @@
+{
+    "_id" : ObjectId("5b2c11481470fbaecd159dfd"),
+    "name" : "Troo",
+    "__v" : 0
+}
+
+{
+    "_id" : ObjectId("5b2c11d2d37177aedfd6d962"),
+    "name" : "Kind",
+    "__v" : 0
+}
+
+{
+    "_id" : ObjectId("5b2c1216d37177aedfd6d963"),
+    "name" : "Hälsa",
+    "__v" : 0
+}
+
+{
+    "_id" : ObjectId("5b2c1264d37177aedfd6d964"),
+    "name" : "Arnold",
+    "__v" : 0
+}
+
+{
+    "_id" : ObjectId("5b2c1267d37177aedfd6d965"),
+    "name" : "Gibson",
+    "__v" : 0
+}
+
+{
+    "_id" : ObjectId("5b2c12a1d37177aedfd6d966"),
+    "name" : "Brodo",
+    "__v" : 0
+}
+
+{
+    "_id" : ObjectId("5b2c12a4d37177aedfd6d967"),
+    "name" : "O-Live & Co.",
+    "__v" : 0
+}
+
+{
+    "_id" : ObjectId("5b2c132406cf65af3475d28e"),
+    "name" : "Dr.Praeger's",
+    "__v" : 0
+}
+
+{
+    "_id" : ObjectId("5b2c171c357cb8b03cb04342"),
+    "name" : "Spindriff",
+    "__v" : 0
+}
