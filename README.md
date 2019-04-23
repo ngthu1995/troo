@@ -1,9 +1,11 @@
-#Troo
+# Troo
+
 A dairy, snack shopping cart application build with MERN stack with admin section to manage products and checkout section using Paypal's API (in progress).
 
 The application uses NodeJS, Express, and Mongoose, MongoDB for server side, and React, HTML, CSS for client side. All authenticated users are able to add items to shopping cart, find products with different filters. Only admin is able to add new products to the site, manage categories to the application.
 
-###Completed:
+### Completed:
+
 Users are able to sign up, sign in, and sign out. The nav links change based on user's status.
 Users are able to add items to cart, and the number got reflected in the cart.
 Admin is able to add new products with images through DropZone and Cloudinary.
