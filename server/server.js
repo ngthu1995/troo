@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true })); ///reads query string
 app.use(bodyParser.json()); //reads json
 app.use(cookieParser());
 
-app.user(express.static("client/build"));
+app.use(express.static("client/build"));
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
