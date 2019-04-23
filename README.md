@@ -14,7 +14,8 @@ The auth route checks if current user is authenticated to commit some actions or
 Image previews are available if user click on (Lightbox).
 The products shows correct info attached in database.
 
-###In progress & future:
+### In progress & future:
+
 The cart needs to fetch all info from authenticated user's cart
 Users are able to purchase items and show up in history puschase
 The users are able to see his/her own info and edit if possible.
@@ -26,12 +27,13 @@ The demo site can be viewed here: https://hidden-falls-31883.herokuapp.com/
 _Admin role demo account: francis4@gmail.com_
 _Admin role demo password: password1234_
 
-##Getting Started
+## Getting Started
+
 Node.js installed
 React installed
 Nodemon installed
 
-##Technologies & Tools
+## Technologies & Tools
 
 - NodeJs
 - Express
@@ -41,10 +43,11 @@ Nodemon installed
 - React
 - Redux
 
-##Prerequisites
+## Prerequisites
+
 Understanding of MongoDB, Express, React, NodeJS (MERN) along with knowledge of Heroku + Mlab
 
-###Installing
+### Installing
 
 1. Clone the repo to your local machine
    `$ git clone https://github.com/ngthu1995/troo`
@@ -69,9 +72,10 @@ Understanding of MongoDB, Express, React, NodeJS (MERN) along with knowledge of 
 7. Or Run server and client at the same time after installing _concurrently_
    `$ npm run dev`
 
-8. App now running on localhost:3000
+8. App now running on
 
-##Running the tests
+## Running the tests
+
 Test Driven Development (TDD) is used throughout the application ultitlizing Mocha and Chai.
 Tests can be performed by running _npm test_ or _mocha_
 
@@ -103,22 +107,28 @@ describe("GET /abc", function() {
 });
 ```
 
-##Deployment
+## Deployment
+
 The site is deployed with Heroku and Mlab adds-on.
 
-##Built With
+## Built With
+
 React + Redux - The web framework used
 
-##Versioning
+## Versioning
+
 Node: 10.15.0
 _material-ui/core: 3.9.3_
 _babel/runtime": 7.4.3_
 
-##Authors
+## Author
+
 Thu Nguyen - personal website: http://thunguyen.space/
 
-##License
+## License
+
 This project is licensed under ThuNguyen@2019.
 
-##Acknowledgments
+## Acknowledgments
+
 A big thank to all the articles from medium and helpful guide, support from people around me.
