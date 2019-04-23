@@ -6,6 +6,7 @@ The application uses NodeJS, Express, and Mongoose, MongoDB for server side, and
 ###Completed:
 Users are able to sign up, sign in, and sign out. The nav links change based on user's status.
 Users are able to add items to cart, and the number got reflected in the cart.
+Admin is able to add new products with images through DropZone and Cloudinary.
 All users are able to toggle between grid view and list view.
 The auth route checks if current user is authenticated to commit some actions or not.
 Image previews are available if user click on (Lightbox).
@@ -44,33 +45,61 @@ Understanding of MongoDB, Express, React, NodeJS (MERN) along with knowledge of 
 ###Installing
 
 1. Clone the repo to your local machine
-   \$ git clone https://github.com/ngthu1995/troo
+   `$ git clone https://github.com/ngthu1995/troo`
 
 2. Install dependencies on server:
-   $ cd troo/server
-$ npm install
+   `$ cd troo/server`
+   `$ npm install`
 
 3. Install dependencies on client:
-   $ cd troo/client
-$ npm install
+   \$ cd troo/client``\$ npm install```
 
 4. Install nodemon globally
-   npm install -g nodemon
+   `npm install -g nodemon`
 
 5. Start server:
-   \$ npm start
+   `$ npm start`
 
 +
-5.Start client:
-\$ npm client
+6.Start client:
+`$ npm client`
 
-6. Or Run server and client at the same time after installing _concurrently_
-   \$ npm run dev
+7. Or Run server and client at the same time after installing _concurrently_
+   `$ npm run dev`
 
-7. App now running on localhost:3000
+8. App now running on localhost:3000
 
 ##Running the tests
-Using Mocha and Chais
+Test Driven Development (TDD) is used throughout the application ultitlizing Mocha and Chai.
+Tests can be performed by running _npm test_ or _mocha_
+
+Below are two examples of tests:
+
+```
+describe("GET /", function() {
+  // #1 should return home page
+
+  it("should return home page", function(done) {
+    // calling home page api
+    request.get("/", (err, res) => {
+      expect(200);
+      done();
+    });
+  });
+});
+
+describe("GET /abc", function() {
+  // #1 should return 404
+
+  it("should return home 404", function(done) {
+    // calling home page api with invalid query
+    request.get("/abc", (err, res) => {
+      expect(404);
+      done();
+    });
+  });
+});
+```
 
 ##Deployment
 The site is deployed with Heroku and Mlab adds-on.

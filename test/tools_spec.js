@@ -23,7 +23,7 @@ describe("GET /abc", function() {
   // #1 should return 404
 
   it("should return home 404", function(done) {
-    // calling home page api
+    // calling home page api with invalid query
     request.get("/abc", (err, res) => {
       expect(404);
       done();
