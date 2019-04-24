@@ -53,24 +53,25 @@ Understanding of MongoDB, Express, React, NodeJS (MERN) along with knowledge of 
 1. Clone the repo to your local machine
    `$ git clone https://github.com/ngthu1995/troo`
 
-2. Install dependencies on server:
-   `$ cd troo/server`
+2. Install dependencies on server: \
+   `$ cd troo/server` \
    `$ npm install`
 
-3. Install dependencies on client:
-   \$ cd troo/client``\$ npm install```
+3. Install dependencies on client: \
+   `$ cd troo/client`\
+   `$ npm install`
 
-4. Install nodemon globally
+4. Install nodemon globally \
    `npm install -g nodemon`
 
-5. Start server:
+5. Start server:\
    `$ npm start`
 
 +
-6.Start client:
-`$ npm client`
+6.Start client:\
+   `$ npm client`
 
-7. Or Run server and client at the same time after installing _concurrently_
+7. Or Run server and client at the same time after installing _concurrently_ \
    `$ npm run dev`
 
 8. App now running on
@@ -114,7 +115,7 @@ The site is deployed with Heroku and Mlab adds-on.
 
 ## Built With
 
-React + Redux - The web framework used
+MERN - The web framework used
 
 ## Versioning
 
