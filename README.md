@@ -7,7 +7,8 @@ The application uses NodeJS, Express, and Mongoose, MongoDB for server side, and
 ### Completed:
 
 Users are able to sign up, sign in, and sign out. The nav links change based on user's status.
-Users are able to add items to cart, and the number got reflected in the cart.
+Users are able to add, delete items to cart, and the number got reflected in the cart.
+The total ammount shows up in the cart.
 Admin is able to add new products with images through DropZone and Cloudinary.
 All users are able to toggle between grid view and list view.
 The auth route checks if current user is authenticated to commit some actions or not.
