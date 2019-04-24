@@ -67,7 +67,7 @@ Understanding of MongoDB, Express, React, NodeJS (MERN) along with knowledge of 
 5. Start server: \
    `$ npm start`
 
-6.Start client: \ 
+6. Start client: \ 
    `$ npm client`
 
 7. Or Run server and client at the same time after installing _concurrently_ \
