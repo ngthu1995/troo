@@ -50,7 +50,7 @@ Understanding of MongoDB, Express, React, NodeJS (MERN) along with knowledge of 
 
 ### Installing
 
-1. Clone the repo to your local machine
+1. Clone the repo to your local machine \
    `$ git clone https://github.com/ngthu1995/troo`
 
 2. Install dependencies on server: \
@@ -64,11 +64,10 @@ Understanding of MongoDB, Express, React, NodeJS (MERN) along with knowledge of 
 4. Install nodemon globally \
    `npm install -g nodemon`
 
-5. Start server:\
+5. Start server: \
    `$ npm start`
 
-+
-6.Start client:\
+6.Start client: \ 
    `$ npm client`
 
 7. Or Run server and client at the same time after installing _concurrently_ \
