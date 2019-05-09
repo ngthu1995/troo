@@ -17,7 +17,7 @@ The products shows correct info attached in database.
 
 ### Screenshot:
 
-![Main site](/client/public/images/troo.PNG "Screenshot of the application")
+![Main site](/client/public/images/troo.png "Screenshot of the application")
 
 ### In progress & future:
 
