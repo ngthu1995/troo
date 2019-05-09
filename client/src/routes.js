@@ -14,6 +14,7 @@ import UserDashboard from "./components/User";
 import AddProduct from "./components/User/Admin/add_product";
 import ManageCategories from "./components/User/Admin/manage_categories";
 import UserCart from "./components/User/cart";
+import UpdateProfile from "./components/User/update_profile";
 
 const Routes = () => {
   return (
@@ -26,6 +27,12 @@ const Routes = () => {
           component={Auth(UserDashboard, true)}
         />
         <Route path="/user/cart" exact component={Auth(UserCart, true)} />
+        <Route
+          path="/user/user_profile"
+          exact
+          component={Auth(UpdateProfile, true)}
+        />
+
         <Route
           path="/admin/add_product"
           exact

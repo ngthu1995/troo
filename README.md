@@ -14,6 +14,10 @@ The auth route checks if current user is authenticated to commit some actions or
 Image previews are available if user click on (Lightbox).
 The products shows correct info attached in database.
 
+### Screenshot:
+
+![Main site](/client/public/images/troo.PNG "Screenshot of the application")
+
 ### In progress & future:
 
 The cart needs to fetch all info from authenticated user's cart

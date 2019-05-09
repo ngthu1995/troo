@@ -13,6 +13,8 @@ const app = express();
 const mongoose = require("mongoose");
 require("dotenv").config();
 
+const async = require("async");
+
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI);
 
@@ -28,11 +30,16 @@ cloudinary.config({
   api_secret: process.env.CLOUD_API_SECRET
 });
 
+///ngthu1995-facilitator@yahoo.com.vn
+///AZh3TgoFJJIiv6PNpdDH8LFlurMLIndB_2jWvaeVLHr1_imWOsznjuwKXI9_dsEsjtn7lhcvaw2j2_U2
+///EGHGvtVusCCgbIyhrk_BvWuDLBugu-nOirHWoAA-HZesvPAtOzZ-uIOQ8aB6B6kR1uNpgVHo5XDqz9qe
+
 //Models
 const { User } = require("./models/user");
 const { Brand } = require("./models/brand");
 const { Lifestyle } = require("./models/lifestyle");
 const { Product } = require("./models/product");
+const { Payment } = require("./models/payment");
 
 //Middleware
 const { auth } = require("./middleware/auth");
@@ -337,6 +344,79 @@ app.get("/api/users/removeFromCart", auth, (req, res) => {
             cart
           });
         });
+    }
+  );
+});
+
+app.post("/api/users/successBuy", auth, (req, res) => {
+  let history = [];
+  let transactionData = {};
+
+  //user history
+  req.body.cartDetail.forEach(item => {
+    history.push({
+      dateOfPurchase: Date.now(),
+      name: item.name,
+      brand: item.brand.name,
+      id: item._id,
+      price: item.price,
+      quantity: item.quantity,
+      paymentId: req.body.paymentData.paymentID
+    });
+  });
+
+  //payment dash
+  transactionData.user = {
+    id: req.user._id,
+    name: req.user.name,
+    lastname: req.user.lastname,
+    email: req.user.email
+  };
+
+  transactionData.data = req.body.paymentData;
+  transactionData.product = history;
+
+  User.findOneAndUpdate(
+    { _id: req.user._id },
+    { $push: { history: history }, $set: { cart: [] } },
+    { new: true },
+    (err, user) => {
+      if (err) return res.json({ success: false, err });
+
+      const payment = new Payment(transactionData);
+      payment.save((err, doc) => {
+        if (err) return res.json({ success: false, err });
+
+        let products = [];
+        doc.product.forEach(item => {
+          products.push({ id: item.id, quantity: item.quantity });
+        });
+
+        async.eachSeries(
+          products,
+          (item, callback) => {
+            //update payment collection
+            Product.update(
+              { _id: item.id },
+              {
+                $inc: {
+                  sold: item.quantity
+                }
+              },
+              { new: false },
+              callback
+            );
+          },
+          err => {
+            if (err) return res.json({ success: false, err });
+            res.status(200).json({
+              success: true,
+              cart: user.cart,
+              cartDetail: []
+            });
+          }
+        );
+      });
     }
   );
 });
