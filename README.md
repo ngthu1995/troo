@@ -7,7 +7,8 @@ The application uses NodeJS, Express, and Mongoose, MongoDB for server side, and
 ### Completed:
 
 Users are able to sign up, sign in, and sign out. The nav links change based on user's status.
-Users are able to add items to cart, and the number got reflected in the cart.
+Users are able to add, delete items to cart, and the number got reflected in the cart.
+The total ammount shows up in the cart.
 Admin is able to add new products with images through DropZone and Cloudinary.
 All users are able to toggle between grid view and list view.
 The auth route checks if current user is authenticated to commit some actions or not.
@@ -53,27 +54,27 @@ Understanding of MongoDB, Express, React, NodeJS (MERN) along with knowledge of 
 
 ### Installing
 
-1. Clone the repo to your local machine
+1. Clone the repo to your local machine \
    `$ git clone https://github.com/ngthu1995/troo`
 
-2. Install dependencies on server:
-   `$ cd troo/server`
+2. Install dependencies on server: \
+   `$ cd troo/server` \
    `$ npm install`
 
-3. Install dependencies on client:
-   \$ cd troo/client``\$ npm install```
+3. Install dependencies on client: \
+   `$ cd troo/client`\
+   `$ npm install`
 
-4. Install nodemon globally
+4. Install nodemon globally \
    `npm install -g nodemon`
 
-5. Start server:
+5. Start server: \
    `$ npm start`
 
-+
-6.Start client:
-`$ npm client`
+6. Start client:\ 
+   `$ npm client`
 
-7. Or Run server and client at the same time after installing _concurrently_
+7. Or Run server and client at the same time after installing _concurrently_ \
    `$ npm run dev`
 
 8. App now running on
@@ -117,7 +118,7 @@ The site is deployed with Heroku and Mlab adds-on.
 
 ## Built With
 
-React + Redux - The web framework used
+MERN - The web framework used
 
 ## Versioning
 
