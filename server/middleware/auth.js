@@ -5,7 +5,14 @@ let auth = (req, res, next) => {
   console.log("🚀 ~ file: auth.js ~ line 5 ~ auth ~ token", token);
 
   User.findByToken(token, (err, user) => {
-    if (err) throw err;
+    if (err) {
+      console.log("🚀 ~ file: auth.js ~ line 9 ~ User.findByToken ~ err", err);
+      return res.json({
+        isAuth: false,
+        error: true,
+      });
+    }
+    // if (err) throw err;
     if (!user)
       return res.json({
         isAuth: false,
