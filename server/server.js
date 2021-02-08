@@ -16,6 +16,7 @@ require("dotenv").config();
 const async = require("async");
 
 mongoose.Promise = global.Promise;
+
 mongoose.connect(process.env.MONGODB_URI);
 
 app.use(bodyParser.urlencoded({ extended: true })); ///reads query string
@@ -27,7 +28,7 @@ app.use(express.static("client/build"));
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.CLOUD_API_KEY,
-  api_secret: process.env.CLOUD_API_SECRET
+  api_secret: process.env.CLOUD_API_SECRET,
 });
 
 ///ngthu1995-facilitator@yahoo.com.vn
@@ -54,7 +55,7 @@ app.get("/api/users/auth", auth, (req, res) => {
     lastname: req.user.lastname,
     role: req.user.role,
     cart: req.user.cart,
-    history: req.user.history
+    history: req.user.history,
   });
 });
 
@@ -74,7 +75,7 @@ app.post("/api/product/shop", (req, res) => {
       if (key === "price") {
         findArgs[key] = {
           $gte: req.body.filters[key][0],
-          $lte: req.body.filters[key][1]
+          $lte: req.body.filters[key][1],
         };
       } else {
         findArgs[key] = req.body.filters[key];
@@ -94,7 +95,7 @@ app.post("/api/product/shop", (req, res) => {
       if (err) return res.status(400).send(err);
       res.status(200).json({
         size: articles.length,
-        articles
+        articles,
       });
     });
 });
@@ -129,7 +130,7 @@ app.get("/api/product/articles_by_id", (req, res) => {
   if (type === "array") {
     let ids = req.query.id.split(",");
     items = [];
-    items = ids.map(item => {
+    items = ids.map((item) => {
       return mongoose.Types.ObjectId(item); //convert id to objectId in monggoose
     });
   }
@@ -150,7 +151,7 @@ app.post("/api/product/article", auth, admin, (req, res) => {
 
     res.status(200).json({
       success: true,
-      article: doc
+      article: doc,
     });
   });
 });
@@ -166,7 +167,7 @@ app.post("/api/product/lifestyle", auth, admin, (req, res) => {
     if (err) return res.json({ success: false, err });
     res.status(200).json({
       success: true,
-      lifestyle: doc
+      lifestyle: doc,
     });
   });
 });
@@ -189,7 +190,7 @@ app.post("/api/product/brand", auth, admin, (req, res) => {
     if (err) return res.json({ success: false, err });
     res.status(200).json({
       success: true,
-      brand: doc
+      brand: doc,
     });
   });
 });
@@ -210,7 +211,7 @@ app.post("/api/users/register", (req, res) => {
   user.save((err, doc) => {
     if (err) return res.json({ success: false, err });
     res.status(200).json({
-      success: true
+      success: true,
       // userdata: doc
     });
   });
@@ -222,7 +223,7 @@ app.post("/api/users/login", (req, res) => {
     if (!user)
       return res.json({
         loginSuccess: false,
-        message: "Auth failes, email not found"
+        message: "Auth failes, email not found",
       });
 
     //check the password
@@ -233,12 +234,9 @@ app.post("/api/users/login", (req, res) => {
       //generate a token n save it as cookie
       user.generateToken((err, user) => {
         if (err) return res.status(400).send(err);
-        res
-          .cookie("w_auth", user.token)
-          .status(200)
-          .json({
-            loginSuccess: true
-          });
+        res.cookie("w_auth", user.token).status(200).json({
+          loginSuccess: true,
+        });
       });
     });
   });
@@ -248,7 +246,7 @@ app.get("/api/users/logout", auth, (req, res) => {
   User.findOneAndUpdate({ _id: req.user._id }, { token: "" }, (err, doc) => {
     if (err) return res.json({ success: false, err });
     return res.status(200).send({
-      success: true
+      success: true,
     });
   });
 });
@@ -256,16 +254,16 @@ app.get("/api/users/logout", auth, (req, res) => {
 app.post("/api/users/uploadimage", auth, admin, formidable(), (req, res) => {
   cloudinary.uploader.upload(
     req.files.file.path,
-    result => {
+    (result) => {
       console.log(result);
       res.status(200).send({
         public_id: result.public_id,
-        url: result.url
+        url: result.url,
       });
     },
     {
       public_id: `${Date.now()}`,
-      resource_type: "auto"
+      resource_type: "auto",
     }
   );
 });
@@ -283,7 +281,7 @@ app.post("/api/users/addToCart", auth, (req, res) => {
   User.findOne({ _id: req.user._id }, (err, doc) => {
     let duplicate = false;
 
-    doc.cart.forEach(item => {
+    doc.cart.forEach((item) => {
       if (item.id == req.query.productId) {
         duplicate = true;
       }
@@ -293,7 +291,7 @@ app.post("/api/users/addToCart", auth, (req, res) => {
       User.findOneAndUpdate(
         {
           _id: req.user._id,
-          "cart.id": mongoose.Types.ObjectId(req.query.productId)
+          "cart.id": mongoose.Types.ObjectId(req.query.productId),
         },
         { $inc: { "cart.$.quantity": 1 } },
         { new: true },
@@ -310,9 +308,9 @@ app.post("/api/users/addToCart", auth, (req, res) => {
             cart: {
               id: mongoose.Types.ObjectId(req.query.productId),
               quantity: 1,
-              date: Date.now()
-            }
-          }
+              date: Date.now(),
+            },
+          },
         },
         { new: true },
         (err, doc) => {
@@ -331,7 +329,7 @@ app.get("/api/users/removeFromCart", auth, (req, res) => {
     { new: true },
     (err, doc) => {
       let cart = doc.cart;
-      let array = cart.map(item => {
+      let array = cart.map((item) => {
         return mongoose.Types.ObjectId(item.id);
       });
 
@@ -341,7 +339,7 @@ app.get("/api/users/removeFromCart", auth, (req, res) => {
         .exec((err, cartDetail) => {
           return res.status(200).json({
             cartDetail,
-            cart
+            cart,
           });
         });
     }
@@ -353,7 +351,7 @@ app.post("/api/users/successBuy", auth, (req, res) => {
   let transactionData = {};
 
   //user history
-  req.body.cartDetail.forEach(item => {
+  req.body.cartDetail.forEach((item) => {
     history.push({
       dateOfPurchase: Date.now(),
       name: item.name,
@@ -361,7 +359,7 @@ app.post("/api/users/successBuy", auth, (req, res) => {
       id: item._id,
       price: item.price,
       quantity: item.quantity,
-      paymentId: req.body.paymentData.paymentID
+      paymentId: req.body.paymentData.paymentID,
     });
   });
 
@@ -370,7 +368,7 @@ app.post("/api/users/successBuy", auth, (req, res) => {
     id: req.user._id,
     name: req.user.name,
     lastname: req.user.lastname,
-    email: req.user.email
+    email: req.user.email,
   };
 
   transactionData.data = req.body.paymentData;
@@ -388,7 +386,7 @@ app.post("/api/users/successBuy", auth, (req, res) => {
         if (err) return res.json({ success: false, err });
 
         let products = [];
-        doc.product.forEach(item => {
+        doc.product.forEach((item) => {
           products.push({ id: item.id, quantity: item.quantity });
         });
 
@@ -400,19 +398,19 @@ app.post("/api/users/successBuy", auth, (req, res) => {
               { _id: item.id },
               {
                 $inc: {
-                  sold: item.quantity
-                }
+                  sold: item.quantity,
+                },
               },
               { new: false },
               callback
             );
           },
-          err => {
+          (err) => {
             if (err) return res.json({ success: false, err });
             res.status(200).json({
               success: true,
               cart: user.cart,
-              cartDetail: []
+              cartDetail: [],
             });
           }
         );
@@ -424,7 +422,7 @@ app.post("/api/users/successBuy", auth, (req, res) => {
 if (process.env.NODE_ENV === "production") {
   const path = require("path");
   app.get("/*", (req, res) => {
-    res.sendfile(path.resolve(__dirname, "../client", "build", "index.html"));
+    res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
   });
 }
 
