@@ -85,14 +85,6 @@ app.post("/api/product/shop", (req, res) => {
 
   findArgs["publish"] = true;
 
-  Product.save(function (err) {
-    if (err) {
-      console.log("Error:", err);
-    } else {
-      console.log("success");
-    }
-  });
-
   Product.find(findArgs)
     .populate("brand")
     .populate("lifestyle")
