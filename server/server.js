@@ -24,6 +24,7 @@ app.use(bodyParser.json()); //reads json
 app.use(cookieParser());
 
 app.use(express.static("client/build"));
+app.set("trust proxy", 1);
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
