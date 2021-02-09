@@ -27,6 +27,8 @@ The users are able to see his/her own info and edit if possible.
 The list view should look a little more organized.
 The site needs to be responsive and more cohesive.
 
+The demo can be view at https://hidden-falls-31883.herokuapp.com/
+
 _Admin role demo account: francis4@gmail.com_
 _Admin role demo password: password1234_
 
