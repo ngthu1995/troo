@@ -4,9 +4,9 @@ let auth = (req, res, next) => {
   let token = req.cookies.w_auth;
 
   User.findByToken(token, (err, user) => {
-    if (err) throw err;
-    if (!user) {
-      return res.json({
+    // if (err) throw err;
+    if (!user || err) {
+      return res.status(200).json({
         isAuth: false,
         error: true,
       });
